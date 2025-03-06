@@ -5,9 +5,11 @@
 package algoritmos;
 
 /**
- * Esta clase contendra todos los algoritmos de busqueda que se usaran en la unidad
+ * Esta clase contendra todos los algoritmos de busqueda que se usaran en la
+ * unidad
+ *
  * @author Roberto Verdugo Beltran - 248285
  */
 public class AlgoritmosDeBusqueda {
-    
+
 }
