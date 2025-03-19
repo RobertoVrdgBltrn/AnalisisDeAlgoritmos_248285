@@ -11,5 +11,5 @@ package algoritmos;
  * @author Roberto Verdugo Beltran - 248285
  */
 public class AlgoritmosDeBusqueda {
-
+    
 }

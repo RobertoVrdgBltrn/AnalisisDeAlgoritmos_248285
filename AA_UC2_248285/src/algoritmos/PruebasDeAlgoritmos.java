@@ -13,12 +13,7 @@ package algoritmos;
 public class PruebasDeAlgoritmos {
     
     public static void main(String[] args) {        
-        int[] a = {9,1,5};
-        AlgoritmosDeOrdenamiento ado = new AlgoritmosDeOrdenamiento(a);
+        int[] a = {7,3,2,6,5,4};
         
-        System.out.println("Ordenamiento de Burbuja");
-        ado.mostar();
-        ado.burbuja(a);
-        ado.mostar();
     }
 }
