@@ -12,8 +12,11 @@ package algoritmos;
  */
 public class PruebasDeAlgoritmos {
     
-    public static void main(String[] args) {        
-        int[] a = {7,3,2,6,5,4};
+    public static void main(String[] args) {
+        int[] a = {5, 3, 6}; // Array desordenado
+        AlgoritmosDeOrdenamiento ado = new AlgoritmosDeOrdenamiento(a);
+        ado.insercion(a);
+        ado.mostar();
         
     }
 }

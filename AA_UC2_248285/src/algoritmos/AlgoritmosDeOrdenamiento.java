@@ -45,16 +45,20 @@ public class AlgoritmosDeOrdenamiento {
     } // n^2 + n + 4 
 
     public void insercion(int[] a) {
-        for (int i = 1; i < a.length; i++) { // Recorremos desde el segundo elemento
-            int clave = a[i];  // Elemento a insertar en su posición correcta
+        // Recorremos desde el segundo elemento
+        for (int i = 1; i < a.length; i++) { 
+            // Elemento a insertar en su posición correcta
+            int clave = a[i];  
             int j = i - 1;
 
             // Mover elementos mayores a la derecha
             while (j >= 0 && a[j] > clave) {
-                a[j + 1] = a[j]; // Desplazamiento
+                // Desplazamiento
+                a[j + 1] = a[j];
                 j--;
             }
-            a[j + 1] = clave; // Insertar el elemento en su lugar correcto
+            // Insertar el elemento en su lugar correcto
+            a[j + 1] = clave; 
         }
     }
 
@@ -75,36 +79,44 @@ public class AlgoritmosDeOrdenamiento {
     }
 
     public static void quickSort(int a[], int inicio, int fin) {
-        int pivote = particionar(a, inicio, fin); // Pivote con valor del ultimo indice del arreglo
+        // Caso Base: Si el segmento tiene al menos 2 elementos, continuamos
+        if (inicio < fin) {
+            // Obtener el índice del pivote después de la partición
+            int pivote = particionar(a, inicio, fin);
 
-        // Recursion a la izquierda
-        quickSort(a, inicio, pivote - 1);
-
-        quickSort(a, pivote + 1, fin);
+            // Aplicar QuickSort en la parte izquierda (menores al pivote)
+            quickSort(a, inicio, pivote - 1);
+            // Aplicar QuickSort en la parte derecha (mayores al pivote)
+            quickSort(a, pivote + 1, fin);
+        }
     }
 
-    // Metodo necesario para quickSort
     private static int particionar(int a[], int inicio, int fin) {
-        // Seleccionar el pivote
+        // Seleccionamos el pivote (último elemento del segmento)
         int pivote = a[fin];
+        int i = inicio - 1; // Índice del menor elemento encontrado
 
-        // Seleccionar el indice mas pequeno con respecto al pivote
-        int i = inicio - 1;
-
-        // Recorrer todo el arreglo buscando elemento menores al pivote para intercambiarlos
+        // Recorrer el segmento y mover elementos menores o iguales al pivote hacia la izquierda
         for (int actual = inicio; actual < fin; actual++) {
-            if (a[actual] < pivote) {
+            if (a[actual] <= pivote) { // Se cambió '<' por '<=' para mayor estabilidad en algunos casos
                 i++;
-                int aux = a[i];
-                a[i] = a[actual];
-                a[actual] = aux;
+                // Intercambiar elementos si es necesario
+                if (i != actual) { // Evita intercambios innecesarios
+                    intercambiar(a, i, actual);
+                }
             }
         }
+
+        // Colocar el pivote en su posición final (después del último menor encontrado)
+        intercambiar(a, i + 1, fin);
+
+        return i + 1; // Retornar la posición final del pivote
+    }
+
+    private static void intercambiar(int[] a, int i, int j) {
         int temp = a[i];
-        a[i] = a[fin];
-        a[fin] = temp;
-        
-        return i;
+        a[i] = a[j];
+        a[j] = temp;
     }
 
     /**
